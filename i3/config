@@ -159,10 +159,12 @@ bindsym $mod+r mode "resize"
 bindsym XF86AudioRaiseVolume exec amixer sset Master 5%+
 bindsym XF86AudioLowerVolume exec amixer sset Master 5%-
 bindsym XF86AudioMute exec amixer sset Master toggle
+
 # autostart
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec_always compton 
 
-#exec_always nitrogen --restore
-
 exec_always --no-startup-id feh --bg-fill ~/Pictures/wallpaper.jpg
+
+
+
