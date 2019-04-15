@@ -10,7 +10,7 @@ hide_edge_borders smart
 
 # i3-gaps settings
 gaps inner 5
-gaps outer 20
+gaps outer 10
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -71,6 +71,9 @@ bindsym $mod+space focus mode_toggle
 # focus the parent container
 bindsym $mod+a focus parent
 
+#for_window [class="^.*"] border pixel 1
+default_border pixel 0
+
 # switch to workspace
 bindsym $mod+1 workspace 1
 bindsym $mod+2 workspace 2
@@ -117,18 +120,6 @@ set_from_resource $xcolor13 color13
 set_from_resource $xcolor14 color14
 set_from_resource $xcolor15 color15
 
-set $fg  #363837
-set $bg  #363837
-set $focused_bg #363837
-set $ind #407055
-# class                 border  backgr. text indicator child_border
-client.focused          $focused_bg  $focused_bg  $focused_bg  $ind  $focused_bg     
-client.focused_inactive $bg     $bg     $fg  $bg       $bg
-client.unfocused        $bg     $bg     $fg  $bg      $bg
-client.urgent           $bg     $bg     $fg  $ind      $bg
-client.placeholder       $bg     $bg     $fg  $ind       $bg 
-client.background       $bg
-
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -167,7 +158,7 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
     status_command i3status
-    mode dock
+    mode hide
     position top
     strip_workspace_numbers yes
     font pango:xos4 Terminus medium 9
