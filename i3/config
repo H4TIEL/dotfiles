@@ -95,20 +95,27 @@ bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
-# floating windows
-for_window [class="Nitrogen"] floating enable
-for_window [class="Lxappearance"] floating enable
-for_window [window_role="pop-up"] floating enable
-
-# assigned apps
-assign [class="Java" instance="java"] 3
-assign [class="Eclipse"] 3
-assign [class="Spotify"] 4
-
-# tiny border
-for_window [class="^.*"] border pixel 2
-
 # colors
+# Get colors from Xresources
+set_from_resource $xforeground foreground
+set_from_resource $xbackground background
+set_from_resource $xcursor cursorColor
+set_from_resource $xcolor0 color0
+set_from_resource $xcolor1 color1
+set_from_resource $xcolor2 color2
+set_from_resource $xcolor3 color3
+set_from_resource $xcolor4 color4
+set_from_resource $xcolor5 color5
+set_from_resource $xcolor6 color6
+set_from_resource $xcolor7 color7
+set_from_resource $xcolor8 color8
+set_from_resource $xcolor9 color9
+set_from_resource $xcolor10 color10
+set_from_resource $xcolor11 color11
+set_from_resource $xcolor12 color12
+set_from_resource $xcolor13 color13
+set_from_resource $xcolor14 color14
+set_from_resource $xcolor15 color15
 
 set $fg  #363837
 set $bg  #363837
@@ -127,7 +134,7 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Do you really want to exit i3?' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -155,16 +162,39 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+bar {
+    status_command i3status
+    mode dock
+    position top
+    strip_workspace_numbers yes
+    font pango:xos4 Terminus medium 9
+    separator_symbol " "
+
+    colors {
+        #Where      #Color
+        background  $xbackground
+        statusline  $xforeground
+
+        #Where              #Border         #Background     #Text
+        focused_workspace   $xforeground    $xbackground    $xforeground
+        urgent_workspace    $xbackground    $xcolor9        $xbackground
+        inactive_workspace  $xbackground    $xbackground    $xforeground
+    }
+}
+
+# Toggle bar
+bindsym $modkey+m bar mode toggle
+
 #Volume control
 bindsym XF86AudioRaiseVolume exec amixer sset Master 5%+
 bindsym XF86AudioLowerVolume exec amixer sset Master 5%-
 bindsym XF86AudioMute exec amixer sset Master toggle
 
-# autostart
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
-exec_always compton 
+#Brightness control
+bindsym XF86MonBrightnessUp exec xbacklight -inc 5
+bindsym XF86MonBrightnessDown exec xbacklight -dec 5
 
 exec_always --no-startup-id feh --bg-fill ~/Pictures/wallpaper.jpg
-
-
-
