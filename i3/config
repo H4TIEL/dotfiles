@@ -10,7 +10,7 @@ hide_edge_borders smart
 
 # i3-gaps settings
 gaps inner 5
-gaps outer 10
+gaps outer 15
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -71,8 +71,8 @@ bindsym $mod+space focus mode_toggle
 # focus the parent container
 bindsym $mod+a focus parent
 
-#for_window [class="^.*"] border pixel 1
-default_border pixel 0
+for_window [class="^.*"] border pixel 1
+#default_border pixel 0
 
 # switch to workspace
 bindsym $mod+1 workspace 1
@@ -159,7 +159,7 @@ bindsym $mod+r mode "resize"
 bar {
     status_command i3status
     mode hide
-    position top
+    position bottom
     strip_workspace_numbers yes
     font pango:xos4 Terminus medium 9
     separator_symbol " "
