@@ -1,11 +1,59 @@
-! generic settings
-*foreground:              #cccccc
-*background:              #000000
+#define nord0 #2E3440
+#define nord1 #3B4252
+#define nord2 #434C5E
+#define nord3 #4C566A
+#define nord4 #D8DEE9
+#define nord5 #E5E9F0
+#define nord6 #ECEFF4
+#define nord7 #8FBCBB
+#define nord8 #88C0D0
+#define nord9 #81A1C1
+#define nord10 #5E81AC
+#define nord11 #BF616A
+#define nord12 #D08770
+#define nord13 #EBCB8B
+#define nord14 #A3BE8C
+#define nord15 #B48EAD
 
-! xterm settings
-xterm*VT100*geometry:     80x24
-xterm*faceName:           xos4 Terminus:size=12:antialias=true
-xterm*faceSize:           12
-xterm*utf8:               1
-xterm*locale:             true
-xterm*transparent:        true
+*.foreground:   nord4
+*.background:   nord0
+*.cursorColor:  nord4
+
+*.color0: nord1
+*.color1: nord11
+*.color2: nord14
+*.color3: nord13
+*.color4: nord9
+*.color5: nord15
+*.color6: nord8
+*.color7: nord5
+*.color8: nord3
+*.color9: nord11
+*.color10: nord14
+*.color11: nord13
+*.color12: nord9
+*.color13: nord15
+*.color14: nord7
+*.color15: nord6
+
+URxvt.font:                   xft:Hack:size=10:antialias=true:hinting=true
+URxvt.url-launcher:           /usr/bin/xdg-open
+URxvt.matcher.button:         1
+URxvt.scrollBar:              false
+URxvt.scrollTtyKeypress:      true
+URxvt.scrollTtyOutput:        false
+URxvt.scrollWithBuffer:       false
+URxvt.scrollstyle:            plain
+URxvt.secondaryScroll:        false
+URxvt.jumpScroll:             false
+URxvt.saveLines:              10000
+URxvt.buffered:               true
+URxvt.inheritPixmap:          true
+URxvt.shading:                20
+URxvt.clipboard.autocopy:     true
+URxvt.keysym.M-Escape:        perl:keyboard-select:activate
+URxvt.keysym.Control-Shift-V: perl:pasta:paste
+URxvt.perl-ext-common:        default,selection-to-clipboard,pasta,matcher,keyboard-select	    
+URxvt.xftAntialias:           true
+URxvt.cursorBlink:            false
+URxvt.pointerBlank:           false

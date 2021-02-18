@@ -4,13 +4,14 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:Hack 9
+font pango:Hack 10
 
 hide_edge_borders smart
+#border_radius 10
 
 # i3-gaps settings
-gaps inner 5
-gaps outer 15
+gaps inner 10
+gaps outer 10
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -22,7 +23,7 @@ bindsym $mod+Return exec urxvt
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run
+#bindsym $mod+d exec dmenu_run
 
 # change focus
 bindsym $mod+j focus left
@@ -63,7 +64,7 @@ bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
+bindsym $mod+Shift+f floating toggle
 
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
@@ -71,8 +72,11 @@ bindsym $mod+space focus mode_toggle
 # focus the parent container
 bindsym $mod+a focus parent
 
-for_window [class="^.*"] border pixel 1
+for_window [class="^.*"] border pixel 0
 #default_border pixel 0
+
+for_window [class="jetbrains-*"] floating enable
+
 
 # switch to workspace
 bindsym $mod+1 workspace 1
@@ -120,6 +124,10 @@ set_from_resource $xcolor13 color13
 set_from_resource $xcolor14 color14
 set_from_resource $xcolor15 color15
 
+
+
+bindsym $mod+d exec dmenu_run -nb '$xbackground' -nf '$xforeground' -sb '$xforeground' -sf '$xbackground'
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -161,7 +169,7 @@ bar {
     mode hide
     position bottom
     strip_workspace_numbers yes
-    font pango:xos4 Terminus medium 9
+    font pango:Hack small 10
     separator_symbol " "
 
     colors {
@@ -171,7 +179,7 @@ bar {
 
         #Where              #Border         #Background     #Text
         focused_workspace   $xforeground    $xbackground    $xforeground
-        urgent_workspace    $xbackground    $xcolor9        $xbackground
+        urgent_workspace    $xbackground    $xforeground    $xbackground
         inactive_workspace  $xbackground    $xbackground    $xforeground
     }
 }
@@ -188,4 +196,6 @@ bindsym XF86AudioMute exec amixer sset Master toggle
 bindsym XF86MonBrightnessUp exec xbacklight -inc 5
 bindsym XF86MonBrightnessDown exec xbacklight -dec 5
 
-exec_always --no-startup-id feh --bg-fill ~/Pictures/wallpaper.jpg
+exec_always --no-startup-id feh --bg-fill /home/pictures/wallpaper.jpg
+
+exec --no-startup-id picom -b
