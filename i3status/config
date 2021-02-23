@@ -16,6 +16,7 @@ general {
 #order += "disk /home"
 order += "wireless _first_"
 order += "disk /"
+order += "tztime local"
 #order += "volume master"
 #order += "cpu_usage"
 order += "battery_all"
@@ -42,7 +43,8 @@ volume master {
 }
 
 tztime local {
-    format = "%d-%m-%Y %H:%M"
+#    format = "%d-%m-%Y %H:%M"
+     format = "%H:%M"
 }
 
 cpu_usage {

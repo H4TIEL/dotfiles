@@ -49,11 +49,10 @@ URxvt.jumpScroll:             false
 URxvt.saveLines:              10000
 URxvt.buffered:               true
 URxvt.inheritPixmap:          true
-URxvt.shading:                20
 URxvt.clipboard.autocopy:     true
 URxvt.keysym.M-Escape:        perl:keyboard-select:activate
 URxvt.keysym.Control-Shift-V: perl:pasta:paste
 URxvt.perl-ext-common:        default,selection-to-clipboard,pasta,matcher,keyboard-select	    
-URxvt.xftAntialias:           true
 URxvt.cursorBlink:            false
 URxvt.pointerBlank:           false
+
